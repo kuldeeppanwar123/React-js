@@ -1,11 +1,9 @@
-import { GET_USERS_SUCCESS } from "./actions";
-
 const reducer = (state = {users: []}, action) => {
   switch(action.type) {
-    case GET_USERS_SUCCESS:
+    case 'FETCH_USERS_SUCCESS':
       return {
         ...state,
-        users: action.users
+        users: action.payload
       }
     default:
       return state;

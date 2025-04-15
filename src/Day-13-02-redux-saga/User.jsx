@@ -1,6 +1,5 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { getUsersFetch } from './actions'
 
 function User() {
   const dispatch = useDispatch()
@@ -8,7 +7,7 @@ function User() {
   return (
       <div >
         <div>Users</div>
-        <button onClick={()=> {dispatch(getUsersFetch())}}>click</button>
+        <button onClick={()=> {dispatch({type: 'FETCH_USERS_REQUEST'})}}>click</button>
         <div>
           {
             users?.map(u => (

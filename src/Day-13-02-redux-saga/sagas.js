@@ -1,20 +1,21 @@
 import {call, put, takeEvery } from "redux-saga/effects";
-import { GET_USERS_FETCH, GET_USERS_SUCCESS } from "./actions";
 
-async function usersFetch() {
+async function apiUserFetch() {
   const res =  await fetch('https://jsonplaceholder.typicode.com/users');
-  console.log({res})
   return res.json();
 }
 
-function* workGetUsersFetch() {
-  const users = yield call(usersFetch)
-  console.log({users})
-  yield put({ type: GET_USERS_SUCCESS, users })
+function* fetchUserWorker() {
+  try {
+    const users = yield call(apiUserFetch)
+    yield put({type: 'FETCH_USERS_SUCCESS', payload: users})
+  } catch (error) {
+    yield put({type: 'FETCH_USERS_FAILURE', payload: error.message})
+  }
 } 
 
-function* mySaga() {
-  yield takeEvery(GET_USERS_FETCH, workGetUsersFetch);
+function* fetchUserWatcher() {
+  yield takeEvery('FETCH_USERS_REQUEST', fetchUserWorker);
 }
 
-export default mySaga;
+export default fetchUserWatcher;
