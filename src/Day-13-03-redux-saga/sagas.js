@@ -1,5 +1,4 @@
-import { func } from "prop-types";
-import { all, delay, put, select, takeEvery, takeLatest } from "redux-saga/effects"
+import { all, delay, put, select, take, takeEvery, takeLatest } from "redux-saga/effects"
 
 export function* helloSaga () {
   console.log('Hello Sagas!')
@@ -24,7 +23,8 @@ export function* watchIncrementAsync() {
 }
 
 export function* watchDecrementAsync() {
-  yield takeLatest('DECREMENT_ASYNC', decrementAsync)
+ const res =  yield take('DECREMENT_ASYNC', decrementAsync)
+ console.log({res})
 }
 
 export default function* rootSaga () {
