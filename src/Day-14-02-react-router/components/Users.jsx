@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link, Outlet, useNavigate } from 'react-router-dom'
+import { Link, Outlet, useNavigate, useSearchParams } from 'react-router-dom'
 
 function Users() {
   const navigate = useNavigate()
+  const [searchParam , setSearchParam] = useSearchParams();
   return (
     <div>
       <div>
@@ -12,6 +13,10 @@ function Users() {
         <button onClick={() => {navigate('admin')}}>Admin</button>
       </div>
       <Outlet/>
+      <div>
+        <button onClick={(() => {setSearchParam({filter: 'active'})})}>active users</button>
+        <button onClick={() => {setSearchParam({})}}>reset filter</button>
+      </div>
     </div>
   )
 }

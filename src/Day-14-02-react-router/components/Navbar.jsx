@@ -4,7 +4,6 @@ import { Link, NavLink } from 'react-router-dom'
 
 function Navbar() {
   const navLinkStyle = (obj) => {
-    console.log({obj})
     return {
       fontWeight: obj.isActive ? 'bold' : 'normal',
       textDecoration: obj.isActive ? 'none' : 'underline'
