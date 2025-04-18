@@ -1,4 +1,4 @@
-import Main from "./Day-16-02-error-boundaries/Main"
+import Main from "./Day-16-03-children-prop/Main"
 
 
 function App() {
