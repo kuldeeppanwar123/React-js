@@ -5,7 +5,7 @@ const MAX_COUNT_ALLOWED = 5;
 
 function Counter() {
   const [count, setCount] = useState(0);
-  const { showBoundary } = useErrorBoundary();
+  const {showBoundary, resetBoundary} = useErrorBoundary();
 
   const handleClick = () => {
     try {
@@ -23,6 +23,7 @@ function Counter() {
     <div>
       <div>{count}</div>
       <button onClick={handleClick}>click</button>
+      <button onClick={resetBoundary}>reset</button>
     </div>
   )
 }
